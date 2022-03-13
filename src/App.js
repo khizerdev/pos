@@ -1,11 +1,25 @@
-import logo from './logo.svg';
+import { Button } from 'antd';
+import 'antd/dist/antd.css';
 import './App.css';
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+} from "react-router-dom";
+import Home from './pages/Home';
+import Product from './pages/Product';
+// import your route components too
 
 function App() {
   return (
-    <div className="App">
-      
-    </div>
+    <>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/home" element={<Home />}/>
+          <Route path="/products" element={<Product />}/>
+        </Routes>
+      </BrowserRouter>
+    </>
   );
 }
 
