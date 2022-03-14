@@ -1,9 +1,43 @@
-
+import axios from "axios"
+import {useEffect, useState} from 'react'
+import { Col, Row } from "antd";
+import Product from "../components/Product";
+import "../resources/Product.css";
 
 const Home = () => {
+
+  const [products, setProducts] = useState([])
+
+  useEffect(() => {
+    getProducts()
+  
+    
+  }, [])
+  
+
+  const getProducts = async () => {
+    try {
+      const response = await axios.get('/api/products/');
+      setProducts(response.data)
+      console.log(products)
+    } catch (error) {
+      console.log(error.message)
+    }
+    
+  }
+
   return (
     <>
-      <p>Home</p>
+       <Row gutter={20}>
+
+        {products && products.map((item) => {
+          return (
+            <Col xs={24} lg={6} md={12} sm={6}>
+              <Product item={item} />
+            </Col>
+          );
+        })}
+        </Row>
     </>
   );
 }
