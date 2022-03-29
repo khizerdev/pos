@@ -3,10 +3,11 @@ import rootReducer  from './rootReducer'
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 const initialState = {
-  rootReducer: {
+  reducer: {
     cartItems: localStorage.getItem("cartItems")
       ? JSON.parse(localStorage.getItem("cartItems"))
       : [],
+      loading:false
   },
 };
 

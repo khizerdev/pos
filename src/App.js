@@ -14,6 +14,7 @@ import './resources/Layout.css'
 import Main from './layout/Main';
 import {Provider} from 'react-redux'
 import store from './store';
+import Cart from './pages/Cart';
 // import your route components too
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
                       <Routes>
                         <Route path="/home" element={<Home />}/>
                         <Route path="/products" element={<Product />}/>
+                        <Route path="/cart" element={<Cart />}/>
                       </Routes>
               </Main>
             </BrowserRouter>
