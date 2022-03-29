@@ -12,12 +12,15 @@ import Product from './pages/Product';
 import React, { useState } from 'react';
 import './resources/Layout.css'
 import Main from './layout/Main';
+import {Provider} from 'react-redux'
+import store from './store';
 // import your route components too
 
 function App() {
 
   return (
-    <>
+    <>      
+    <Provider store={store}>
             <BrowserRouter>
               <Main>
 
@@ -27,6 +30,7 @@ function App() {
                       </Routes>
               </Main>
             </BrowserRouter>
+            </Provider>
 
              
 

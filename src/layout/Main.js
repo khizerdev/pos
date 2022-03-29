@@ -9,15 +9,25 @@ import {
     LoginOutlined,
     ShoppingCartOutlined,
   } from "@ant-design/icons";
-import React, { useState } from 'react';
+import React, { useState , useEffect } from 'react';
 import '../resources/Layout.css'
 import '../App.css';
-import { Link } from 'react-router-dom';
+import { Link , useNavigate  } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 function Main(props) {
 
-    const [collapsed, setCollapsed] = useState(false)
+    const { cartItems, loading } = useSelector((state) => state.reducer);
+  
+    useEffect(() => {
+        localStorage.setItem("cartItems", JSON.stringify(cartItems));
+      }, [cartItems]);
+ 
+    
 
+    const [collapsed, setCollapsed] = useState(false)
+    
+    const navigate = useNavigate()
     const { Header, Sider, Content } = Layout;
 
     const toggle = () => {
@@ -65,6 +75,16 @@ function Main(props) {
                     className: 'trigger',
                     onClick: toggle,
                     })}
+                    <div
+                        className="cart-count d-flex align-items-center"
+                        onClick={() => navigate("/cart")}
+                    >
+                        <b>
+                        {" "}
+                        <p className="mt-3 mr-2">{cartItems.length}</p>
+                        </b>
+                        <ShoppingCartOutlined />
+                    </div>
                 </Header>
                 <Content
                     className="site-layout-background"

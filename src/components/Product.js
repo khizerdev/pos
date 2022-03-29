@@ -1,8 +1,16 @@
 import { Button } from 'antd'
 import React from 'react'
 import { useDispatch } from 'react-redux'
+import { addToCart } from '../store/actions'
 
 function Product({item}) {
+
+  const dispatch = useDispatch()
+
+  const add = () => {
+    
+    dispatch(addToCart(item))
+  }
 
   return (
     <div className='item'>
@@ -10,7 +18,7 @@ function Product({item}) {
         <img src={item.image} alt="" className='img-fluid'/>
         <h4 className='price'><b>Price : </b>{item.price} $/-</h4>
         <div className="d-flex justify-content-end">
-            <Button >Add To Cart</Button>
+            <Button onClick={() => add()}>Add To Cart</Button>
         </div>
     </div>
   )
